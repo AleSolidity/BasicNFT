@@ -2,23 +2,23 @@
 pragma solidity ^0.8.19;
 
 import {Test, console} from "forge-std/Test.sol";
-import {DeployBasicNFT} from "../script/DeployBasicNFT.s.sol";
-import {BasicNFT} from "../src/BasicNFT.sol";
+import {DeployBasicNft} from "../script/DeployBasicNft.s.sol";
+import {BasicNft} from "../src/BasicNft.sol";
 
-contract BasicNFTTest is Test {
-    DeployBasicNFT public deployer;
-    BasicNFT public basicNft;
+contract BasicNftTest is Test {
+    DeployBasicNft public deployer;
+    BasicNft public basicNft;
     address public USER = makeAddr("user");
     string public constant URI ="https://ipfs.io/ipfs/bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json";
     uint256 public constant MINT_PRICE = 0.1 ether;
 
     function setUp() public {
-        deployer = new DeployBasicNFT();
+        deployer = new DeployBasicNft();
         basicNft = deployer.run();
     }   
-//"BasicNFT", "BNFT"
+//"BasicNft", "BNFT"
     function testNameIsCorrect() public view {
-        string memory expectedName = "BasicNFT";
+        string memory expectedName = "BasicNft";
         string memory actualName = basicNft.name();
         assert(keccak256(abi.encodePacked(expectedName)) == keccak256(abi.encodePacked(actualName)));
     }
